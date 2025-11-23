@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>「霊感」と「音感」は似ている？｜トリイミュージック</title>
+    
+    <!-- Google Fonts: 丸みのある優しいフォント「Zen Maru Gothic」 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 変数設定（雲母保育園風カラー） --- */
+        :root {
+            --bg-cream: #FFF9E5;       /* 全体の背景（薄いクリーム） */
+            --bg-white: #FFFFFF;       /* コンテンツ背景 */
+            --main-orange: #F6AD3C;    /* メインのオレンジ */
+            --accent-green: #8DC63F;   /* アクセントのグリーン */
+            --text-brown: #5D4C46;     /* 文字色（焦げ茶） */
+            --soft-pink: #FF9F9F;      /* 強調・マーカー用 */
+            --line-color: #06C755;     /* LINE色 */
+            --btn-gradient: linear-gradient(to right, #F7B733, #FC4A1A); /* ボタン用グラデ */
+        }
+
+        /* --- リセット & 基本設定 --- */
+        body {
+            font-family: 'Zen Maru Gothic', sans-serif;
+            background-color: var(--bg-cream);
+            color: var(--text-brown);
+            line-height: 2.0;
+            margin: 0;
+            padding: 0;
+            font-size: 16px;
+            /* 背景にうっすらドット柄を入れる */
+            background-image: radial-gradient(#F0E6CC 15%, transparent 16%);
+            background-size: 20px 20px;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.3s; }
+        a:hover { opacity: 0.8; }
+        img { max-width: 100%; height: auto; display: block; border-radius: 20px; }
+
+        /* --- レイアウトコンテナ --- */
+        .wrapper {
+            overflow: hidden; /* 波線の横はみ出し防止 */
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* --- ヘッダー（画像背景エリア） --- */
+        header {
+            /* ★ここにヘッダーの背景画像を指定します */
+            background-image: url('image/prm-26_dl.jpg'); 
+            
+            background-size: cover;   /* 画像を全体に広げる */
+            background-position: center; /* 中央寄せ */
+            
+            padding: 80px 20px 100px 20px; /* 高さを確保 */
+            text-align: center;
+            position: relative;
+        }
+
+        /* 画像の下を波型に切り取るためのマスク */
+        header::after {
+            content: "";
+            position: absolute;
+            bottom: -1px; /* 隙間防止 */
+            left: 0;
+            width: 100%;
+            height: 50px; /* 波の高さ */
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            /* 下の背景色（クリーム色）と同じ色の波型画像を被せる */
+            background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 1440 320' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23FFF9E5' fill-opacity='1' d='M0,224L48,213.3C96,203,192,181,288,181.3C384,181,480,203,576,224C672,245,768,267,864,261.3C960,256,1056,224,1152,202.7C1248,181,1344,171,1392,165.3L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+        }
+
+        h1 {
+            font-size: 26px;
+            color: var(--main-orange);
+            margin-bottom: 10px;
+            line-height: 1.6;
+            position: relative;
+            z-index: 10;
+            /* 背景画像があっても文字が読めるように白フチをつける */
+            text-shadow: 
+                3px 3px 0px #fff, -3px -3px 0px #fff, 
+                -3px 3px 0px #fff, 3px -3px 0px #fff,
+                0px 3px 0px #fff, 0px -3px 0px #fff;
+        }
+        /* タイトルのあしらい（星） */
+        h1::before, h1::after {
+            content: "★";
+            color: var(--accent-green);
+            font-size: 20px;
+            margin: 0 10px;
+            vertical-align: middle;
+            text-shadow: 2px 2px 0px #fff; /* 星にも白フチ */
+        }
+
+        /* --- プロフィールボックス（手書き風枠線） --- */
+        .profile-section {
+            background: var(--bg-white);
+            padding: 30px;
+            margin: 0 auto 60px auto;
+            max-width: 700px;
+            /* 少し歪んだ円形で手書き感を出す */
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(246, 173, 60, 0.15);
+            border: 3px solid var(--main-orange);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            position: relative;
+            z-index: 5;
+        }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid var(--bg-cream);
+            object-fit: cover;
+            flex-shrink: 0;
+            background-color: #eee;
+        }
+        .profile-info { flex: 1; }
+        .profile-name {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--main-orange);
+            display: block;
+            margin-bottom: 10px;
+            border-bottom: 2px dashed #ddd;
+            padding-bottom: 5px;
+        }
+        .profile-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+        }
+        .profile-list li { margin-bottom: 5px; padding-left: 1.2em; text-indent: -1.2em; }
+        .profile-list li::before { content: "♪"; color: var(--accent-green); margin-right: 5px; font-weight: bold;}
+
+        /* --- 本文エリアデザイン --- */
+        .content-area {
+            background-color: var(--bg-white);
+            border-radius: 40px;
+            padding: 40px 30px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+        }
+
+        /* 見出しH2：オレンジの丸み帯びた背景（雲母風） */
+        h2 {
+            background: var(--main-orange);
+            color: #fff;
+            padding: 15px 25px;
+            border-radius: 30px 30px 30px 0; /* 葉っぱのような形 */
+            font-size: 20px;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            display: inline-block; /* 文字幅に合わせる */
+            position: relative;
+        }
+        h2::after {
+            content: "";
+            display: block;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+        
+        /* 見出しH3：シンプル */
+        h3 {
+            text-align: center; 
+            font-size: 1.4em; 
+            color: var(--main-orange);
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        /* 強調マーカー */
+        .marker {
+            background: linear-gradient(transparent 70%, #FFE082 70%);
+            font-weight: 700;
+        }
+
+        /* 吹き出し（心の声） */
+        .voice-bubble {
+            position: relative;
+            background: #FFF0F5;
+            border: 2px dashed #FFB6C1;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            font-weight: bold;
+            color: #E66;
+        }
+        
+        /* 画像プレースホルダー */
+        .img-box {
+            background-color: #f9f9f9;
+            border: 3px dashed #ddd;
+            border-radius: 20px;
+            color: #aaa;
+            text-align: center;
+            padding: 50px 0;
+            margin: 40px 0;
+        }
+        /* 実際の画像には白い枠線と影をつける */
+        .content-img {
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin: 30px auto;
+        }
+
+        /* --- CTAセクション（下部） --- */
+        .cta-section {
+            background-color: #FFF3D6;
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 40px;
+            margin-top: 60px;
+            border: 4px solid #fff;
+            box-shadow: 0 0 0 4px #F6AD3C; /* 二重線風 */
+        }
+        .cta-title {
+            font-size: 22px;
+            font-weight: 900;
+            color: var(--text-brown);
+            margin-bottom: 30px;
+        }
+        .cta-btn-large {
+            display: block;
+            max-width: 450px;
+            margin: 15px auto;
+            padding: 18px;
+            background: var(--btn-gradient); /* オレンジグラデ */
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 50px;
+            box-shadow: 0 6px 0 #D97B08;
+            position: relative;
+        }
+        .cta-btn-large:active {
+            transform: translateY(4px);
+            box-shadow: 0 2px 0 #D97B08;
+        }
+        .cta-btn-large::after {
+            content: "➜";
+            margin-left: 10px;
+        }
+        
+        /* LINEボタン */
+        .btn-line {
+            background: #06C755;
+            box-shadow: 0 6px 0 #048C3B;
+        }
+        .btn-line:active {
+            box-shadow: 0 2px 0 #048C3B;
+        }
+        
+        /* --- 追従フッター（スマホ用） --- */
+        .sticky-footer {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 92%;
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 15px;
+            z-index: 9999;
+            border: 2px solid var(--main-orange);
+        }
+        .sticky-item {
+            flex: 1;
+            margin: 0 4px;
+        }
+        .sticky-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 50px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: bold;
+            color: #fff;
+        }
+        .s-icon { font-size: 18px; margin-bottom: 2px; }
+        .s-tel { background: #888; }
+        .s-line { background: #06C755; }
+        .s-form { background: var(--main-orange); }
+
+        /* PCでは追従消す */
+        @media screen and (min-width: 768px) {
+            .sticky-footer { display: none; }
+            .wrapper { padding-bottom: 50px; }
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #999;
+            font-size: 12px;
+        }
+
+        /* 装飾パーツ（葉っぱ） */
+        .deco-leaf {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-green);
+            border-radius: 0 50% 50% 50%;
+            transform: rotate(45deg);
+            opacity: 0.8;
+            z-index: 100;
+        }
+        
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+    
+    <!-- 装飾：葉っぱ（絶対配置） -->
+    <div class="deco-leaf" style="top: 20px; left: 10px;"></div>
+    <div class="deco-leaf" style="top: 100px; right: 20px; background:#F6AD3C; transform: rotate(-15deg);"></div>
+
+    <header>
+        <div class="container">
+            <h1>「霊感」と「音感」は似ている？<br>子供に本当にプレゼントしたい<br>『第六感』の話。</h1>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- プロフィールエリア -->
+        <!-- ★画像変更： image/profile.jpg に変更してください -->
+        <div class="profile-section">
+            <img src="image/IMG_8049.jpg" alt="吉田健一" class="profile-img">
+            <div class="profile-info">
+                <span class="profile-name">執筆者：吉田 健一 (Ken)</span>
+                <ul class="profile-list">
+                    <li>元ピアノ調律師 / 株式会社トリイ（滋賀県）</li>
+                    <li>音楽教室スタッフとして約40年、4,000組超の親子の「音楽と心の成長」に伴走</li>
+                    <li>自身の絶対音感を活かしつつ、「音楽は心の教育」を提唱</li>
+                    <li><a href="https://www.mag2.com/m/0000122540" target="_blank" style="text-decoration:underline; color:var(--main-orange);">メルマガ「やめないピアノ」</a>を20年以上執筆中！</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 本文エリア -->
+        <div class="content-area">
+            <p>
+                こんにちは、吉田です。<br><br>
+                私は元々、<strong>ピアノの調律師</strong>としてキャリアをスタートしました。<br>
+                調律とは、コンマ単位のピアノの音のズレを修正する仕事。<br>
+                この特殊な仕事を選んだ理由は、幼少から私の身についていた「絶対音感」を活かしたいという気持ちからでした。
+            </p>
+            <p>
+                そんな「音（聴覚）のプロ」として、そして現場で数千人の子供たちとご家族の伴走をしてきた年長者として、今日は少し不思議で、でもとても大切な<span class="marker">「勘（センス）」</span>の話をさせてください。
+            </p>
+
+            <!-- ★画像挿入1：導入イメージ（例：image/intro.jpg） -->
+            <img src="image/prm-01_dl.jpg" class="content-img"> 
+            
+            <p>
+                いきなりですが…私の妻には「霊感」があります。
+            </p>
+            
+            <div class="voice-bubble">
+                （離脱しないで！怪しい話じゃないので、もうちょっとだけ読んで！笑）
+            </div>
+
+            <p>
+                私は、調律師という職業柄、非科学的なことは一切信じないタイプなのですが、妻のことは信頼しています。<br>
+                なので今日は、「妻にはどうやら霊感があるらしい」という前提でお話しします。
+            </p>
+            <p>
+                ここからは、妻の「霊感」と、私の「絶対音感」。<br>
+                この二つを比べた時に気づいてしまった、ある<strong>「子育ての真実」</strong>のお話です。
+            </p>
+
+
+            <h2>「勘」は、あるだけじゃダメ？</h2>
+            <p>
+                あらためてお尋ねします。<br>
+                皆さんは「霊感」って信じますか？
+            </p>
+            <p>
+                正直に言いますと、<strong>私は全く信じていません。</strong><br>
+                私自身にはそういった力は一切ありませんし、どちらかというと非科学的な話は苦手なタイプです。<br><br>
+                ただ…妻のことは信頼しています。
+            </p>
+            <p>
+                私にとって、霊感も絶対音感も、「目に見えないものを感じ取る」という意味で、ある種<span class="marker">同列のスキル</span>だと思っています。<br>
+                しかし、私たち夫婦には決定的に違うことがあります。
+            </p>
+            <p>
+                私は、自分の絶対音感を仕事や生活で「便利なツール」としてフル活用できています。<br>
+                一方、妻の霊感は…隣で見ていて正直、<strong>「もったいないな」「大変そうだな」</strong>と思ってしまうのです。
+            </p>
+
+            <!-- ★画像挿入2：悩む女性などのイメージ（例：image/thinking.jpg） -->
+            <img src="image/prm-05_dl.jpg" class="content-img"> 
+
+            <p>
+                なぜなら、彼女は時々、自分の意思とは関係なくいろいろなものを受信してしまい、ひどく疲れてしまうからです。<br><br>
+                オン・オフのスイッチがなく、常に情報が流れ込んでくる状態。<br>
+                それは時として、本人を苦しめる「ノイズ」になってしまいます。
+            </p>
+            <p>
+                それを見ていて、私は一つの真実に気づきました。
+            </p>
+            <p style="font-weight: bold; color: var(--main-orange); text-align: center; border: 2px solid var(--main-orange); border-radius: 15px; padding: 15px;">
+                「どんなスキル（勘）も、自分で使いこなせたら『勝ち』だけど、振り回されたら『負け』なんだ」
+            </p>
+            <p>
+                どれだけ鋭い勘を持っていても、それを自分でコントロールできなければ意味がないのです。
+            </p>
+
+
+            <h2>親が贈れる、最強の第六感</h2>
+            <p>
+                では、私たち親が子供にプレゼントできる、<strong>「自分でコントロールできる勘」</strong>とは何でしょうか？<br>
+                それが、<span class="marker">「音感・リズム感」</span>です。
+            </p>
+            <p>
+                「え？音感って、ピアノが弾けるとか、カラオケが上手いとか、そういう話？」<br>
+                「リズム感って、楽器演奏に必要なアレですよね？」
+            </p>
+            <p>
+                そう思われるかもしれません。もちろん、音楽を楽しむためにも大切です。<br>
+                でも、絶対音感を持つ私が実感している「音感・リズム感」の正体は、もっと生きるために必要な<strong>「高性能なセンサー」</strong>のことなんです。
+            </p>
+
+            <!-- ★画像挿入3：子供が音を聴くイメージ（例：image/kid-ear.jpg） -->
+            <img src="image/prm-08_dl.jpg" class="content-img">
+
+            <p>
+                大人になって振り返ると、この力が音楽以外の場面で、何度も私を助けてくれています。<br><br>
+                例えば、仕事の商談や、友人との会話。<br><br>
+                その場の「空気（リズム）」を瞬時に読んだり、「今だ！」という発言の「間（タイミング）」を外さなかったり。<br>
+                あるいは、トラブルが起きそうな時の「違和感（不協和音）」にいち早く気づけたり。<br>
+                （お母さんの声色で「あ、今怒ってるな」というのがすぐわかるから、あえて近寄らないようにするとか…笑）
+            </p>
+            <p>
+                これらは全て、目には見えない空気の振動を感じ取る<strong>「音感・リズム感という名の第六感」</strong>が働いているんです。<br>
+                <small>（第六感は、音感やリズム感以外にもたくさんあります。名もないスキルかもしれません。きっとあなたにも思い当たる節があるはず！）</small>
+            </p>
+            <p>
+                そして妻の霊感とは違って、この音感やリズム感はトレーニング次第で<span class="marker">「自分の意思で自由に使える」</span>ようになります。
+            </p>
+            <p>
+                これこそが、子供が将来どんな道に進んでも、一生その子を守り、助けてくれる最強の武器になると私は信じています。
+            </p>
+
+
+            <h2>プロが選んだ「センサーを育てる」最適解</h2>
+            <p>
+                私は20年以上、教育の現場で「どうすれば子供たちにこの『生きるセンサー』を持たせてあげられるか」を考え続けてきました。<br><br>
+                そして辿り着いた答えが、<strong>ヤマハ音楽教室のメソッド</strong>です。<br>
+                私が自分の教室（株式会社トリイ）でヤマハのカリキュラムを採用しているのは、単に有名だからではありません。
+            </p>
+            <p>
+                <span class="marker">「音感・リズム感を、ただの音楽スキルではなく『身体的な感覚（センサー）』として育てる」</span><br>
+                この点において、ヤマハのメソッドほど理にかなったシステムは他にない確信しているからです。
+            </p>
+
+
+            <h2>「うちの子に才能なんてあるかしら？」</h2>
+            <p>
+                ここまで読んで、<br>
+                「でも、私は音感ないし…リズム音痴だし…」<br>
+                「そんな私の子だから、今のところ特別な才能なんてなさそうだし…」<br>
+                と、不安になったお母さんもいるかもしれません。
+            </p>
+            <p>
+                大丈夫です。自信を持って言わせてください。<br>
+                <strong>それは、無いのではありません。「見えていない」だけなんです。</strong>
+            </p>
+            <p>
+                お子さんは、お母さんのことが大好きです。<br>
+                そしてお母さんも、お子さんのことが大好きですよね。<br>
+                親子の距離は、いつでもゼロ距離。ぴったりくっついています。<br>
+                そして互いが互いを映す鏡のよう…。
+            </p>
+
+            <!-- ★画像挿入4：親子写真（例：image/oyako.jpg） -->
+            <img src="image/prm-10_dl.jpg" class="content-img"> 
+
+            <p>
+                でも、<strong>「近すぎる」からこそ、見えない部分（死角）があるんです。</strong><br>
+                自分の背中が自分では見えないのと同じです。<br><br>
+                だからこそ、<span class="marker">「別の鏡」</span>が必要なんです。
+            </p>
+
+
+            <h2>先生という「新しい鏡」に映してみる</h2>
+            <p>
+                私たちの教室「ドレミぱーく」や幼児科には、プロの講師がいます。<br>
+                彼女は単に音楽を教えるだけの先生ではありません。<br>
+                <strong>「親御さんからは見えない角度から、お子さんの才能を見つけ出すプロ」</strong>でもあります。
+            </p>
+            <p>
+                私が全幅の信頼を置く講師たちのレッスン風景を、少し想像してみてください。
+            </p>
+            <p>
+                講師がピアノで「ジャーン！」と力強い音を鳴らした瞬間、お子さんがハッとして振り返る顔を。<br>
+                あるいは、静かな曲調になったとき、誰に言われなくても自然と身体を揺らし始める姿を。
+            </p>
+            <p>
+                お母さんが「あれ？うちの子、止まっちゃった。もっと元気に動けばいいのに」と心配しても、先生はこう言います。
+            </p>
+
+            <div class="voice-bubble" style="background:#F0F8FF; border-color:#87CEEB; color:#4682B4;">
+                「お母さん、すごいですよ。<br>
+                この子は今、音が消えたあとの『余韻』を聴いています。<br>
+                とても繊細な耳（センサー）を持っていますよ」
+            </div>
+
+            <p>
+                そう言われた瞬間、お母さんの中で「心配」が「発見」に変わります。<br>
+                「あ、この子にはそんな才能があったんだ！」と。
+            </p>
+            <p>
+                ドレミぱーくをはじめとするヤマハ音楽教室は、そんな<strong>「お子さんの中にあるスイッチが見つかる瞬間」</strong>がゴロゴロ転がっている場所なんです。
+            </p>
+
+
+            <h2>ごめんなさい、期限があります</h2>
+            <p>
+                最後に、少しだけ現実的なお話をさせてください。<br>
+                この「音感・リズム感」という素晴らしいセンサーですが、実は<strong>インストールできる期間が決まっています。</strong><br><br>
+                脳科学的には、聴覚の発達は<strong>9歳頃</strong>にピークを迎えてしまうと言われています。
+            </p>
+
+            <!-- ★画像挿入5：聴覚発達グラフ（例：image/graph.jpg） -->
+            <div class="img-box">
+                <img src="image/prm-29_dl.jpg" class="content-img"> 
+            </div>
+
+            <p>
+                つまり、耳の力が<span class="marker">一番急激に伸びるのは、3歳から」</span>なんです。
+            </p>
+            <p>
+                理屈ではなく、身体と心でそのまま「音（感覚）」を吸収できるのは、人生でたった一度、今この時期だけ。<br>
+                大人になってから「勘」を鍛えるのは大変です。でも、脳が柔らかい今の時期なら、遊びの中で自然に、確実な「OS（基本ソフト）」として、お子さんの体に組み込むことができます。
+            </p>
+
+            <div style="border-top: 2px dashed #ddd; margin: 50px 0 30px 0;"></div>
+
+            <h3>── 最後に、親御さんへ ──</h3>
+            <p>
+                私自身、20年以上毎週欠かさずメルマガを書き続け、多くの親御さんの悩み相談に乗ってきました。<br>
+                その中で確信したことがあります。
+            </p>
+            <p>
+                子供の成長は<strong>「親 × 先生 × 子供」のチーム戦</strong>で決まるということです。
+            </p>
+            <p>
+                親御さんが一人で抱え込み、必死に子供の才能を探す必要はありません。<br>
+                私たち現場の人間は、そのためにいます。
+            </p>
+            <p>
+                「調律師」がピアノの音を整えるように、ヤマハの先生は、お子さんの心の感度を整え、才能の芽を見つけ出します。<br><br>
+                お子さんに「一生モノのセンサー」をプレゼントできるのは、今この瞬間のお母さんだけです。<br>
+                ヤマハ音楽教室トリイミュージックの各教室で、お子さんの目がキラッと輝く瞬間に出会えることを楽しみにしています。
+            </p>
+            <p style="text-align: right; margin-top: 20px; font-size: 0.9em;">
+                最後までお読みいただきありがとうございました。
+            </p>
+
+            <!-- CTAエリア（下部） -->
+            <div class="cta-section">
+                <p class="cta-title">▼ お子さんの才能を見つけに行く ▼</p>
+                
+                <!-- ★リンク先を書き換えてください -->
+                <a href="https://YOUR-FORM-URL" class="cta-btn-large">
+                    体験申込フォームはこちら
+                </a>
+                <a href="https://lin.ee/ZqrnUOs" class="cta-btn-large btn-line">
+                    LINEで気軽に相談する
+                </a>
+            </div>
+
+        </div><!-- /content-area -->
+
+    </div><!-- /container -->
+
+    <footer>
+        <p>© Torii Music School. All Rights Reserved.</p>
+    </footer>
+
+</div><!-- /wrapper -->
+
+<!-- スマホ用追従フッター -->
+<div class="sticky-footer">
+    <!-- ★リンク先を書き換えてください -->
+    <div class="sticky-item">
+        <a href="https://YOUR-FORM-URL" class="sticky-btn s-form">
+            <span class="s-icon">✉</span>体験申込
+        </a>
+    </div>
+    <div class="sticky-item">
+        <a href="https://lin.ee/ZqrnUOs" class="sticky-btn s-line">
+            <span class="s-icon">LINE</span>LINE登録
+        </a>
+    </div>
+    <div class="sticky-item">
+        <a href="tel:0740-22-2063" class="sticky-btn s-tel">
+            <span class="s-icon">📞</span>電話相談
+        </a>
+    </div>
+</div>
+
+</body>
+</html>
