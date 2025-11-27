@@ -335,6 +335,34 @@
             opacity: 0.8;
             z-index: 100;
         }
+
+        /* =========================================
+           ▼ 追加修正：スマホ表示時のプロフィール調整
+           ========================================= */
+        @media screen and (max-width: 600px) {
+            .profile-section {
+                /* 縦並びに変更して、テキストエリアの幅を確保 */
+                flex-direction: column; 
+                text-align: center;     
+                padding: 25px 20px;
+            }
+            .profile-img {
+                margin-right: 0;
+                margin-bottom: 15px; /* 画像と名前の間隔 */
+            }
+            .profile-info {
+                width: 100%; /* 横幅いっぱい使う */
+            }
+            .profile-name {
+                display: inline-block; /* 線を文字幅に合わせる */
+                margin-bottom: 15px;
+            }
+            .profile-list {
+                /* 箇条書きは左寄せの方が見やすいので戻す */
+                text-align: left;
+                display: inline-block; /* 中央配置しつつ中身は左寄せ */
+            }
+        }
         
     </style>
 </head>
@@ -355,7 +383,6 @@
     <div class="container">
 
         <!-- プロフィールエリア -->
-        <!-- ★画像変更： image/profile.jpg に変更してください -->
         <div class="profile-section">
             <img src="image/IMG_8049.jpg" alt="吉田健一" class="profile-img">
             <div class="profile-info">
@@ -377,11 +404,15 @@
                 調律とは、コンマ単位のピアノの音のズレを修正する仕事。<br>
                 この特殊な仕事を選んだ理由は、幼少から私の身についていた「絶対音感」を活かしたいという気持ちからでした。
             </p>
+
+            <!-- ★追加画像1 -->
+            <img src="image/prm-17_dl.jpg" class="content-img">
+
             <p>
                 そんな「音（聴覚）のプロ」として、そして現場で数千人の子供たちとご家族の伴走をしてきた年長者として、今日は少し不思議で、でもとても大切な<span class="marker">「勘（センス）」</span>の話をさせてください。
             </p>
 
-            <!-- ★画像挿入1：導入イメージ（例：image/intro.jpg） -->
+            <!-- 導入イメージ -->
             <img src="image/prm-01_dl.jpg" class="content-img"> 
             
             <p>
@@ -409,19 +440,29 @@
             </p>
             <p>
                 正直に言いますと、<strong>私は全く信じていません。</strong><br>
-                私自身にはそういった力は一切ありませんし、どちらかというと非科学的な話は苦手なタイプです。<br><br>
+                私自身にはそういった力は一切ありませんし、どちらかというと非科学的な話は苦手なタイプです。
+            </p>
+            
+            <!-- ★追加画像2 -->
+            <img src="image/prm-03_dl.jpg" class="content-img">
+
+            <p>
                 ただ…妻のことは信頼しています。
             </p>
             <p>
                 私にとって、霊感も絶対音感も、「目に見えないものを感じ取る」という意味で、ある種<span class="marker">同列のスキル</span>だと思っています。<br>
                 しかし、私たち夫婦には決定的に違うことがあります。
             </p>
+
+            <!-- ★追加画像3 -->
+            <img src="image/prm-26_dl.jpg" class="content-img">
+
             <p>
                 私は、自分の絶対音感を仕事や生活で「便利なツール」としてフル活用できています。<br>
                 一方、妻の霊感は…隣で見ていて正直、<strong>「もったいないな」「大変そうだな」</strong>と思ってしまうのです。
             </p>
 
-            <!-- ★画像挿入2：悩む女性などのイメージ（例：image/thinking.jpg） -->
+            <!-- 悩む女性などのイメージ -->
             <img src="image/prm-05_dl.jpg" class="content-img"> 
 
             <p>
@@ -432,6 +473,10 @@
             <p>
                 それを見ていて、私は一つの真実に気づきました。
             </p>
+
+            <!-- ★追加画像4 -->
+            <img src="image/prm-03_dl.jpg" class="content-img">
+
             <p style="font-weight: bold; color: var(--main-orange); text-align: center; border: 2px solid var(--main-orange); border-radius: 15px; padding: 15px;">
                 「どんなスキル（勘）も、自分で使いこなせたら『勝ち』だけど、振り回されたら『負け』なんだ」
             </p>
@@ -449,12 +494,16 @@
                 「え？音感って、ピアノが弾けるとか、カラオケが上手いとか、そういう話？」<br>
                 「リズム感って、楽器演奏に必要なアレですよね？」
             </p>
+
+            <!-- ★追加画像5 -->
+            <img src="image/prm-13_dl.jpg" class="content-img">
+
             <p>
                 そう思われるかもしれません。もちろん、音楽を楽しむためにも大切です。<br>
                 でも、絶対音感を持つ私が実感している「音感・リズム感」の正体は、もっと生きるために必要な<strong>「高性能なセンサー」</strong>のことなんです。
             </p>
 
-            <!-- ★画像挿入3：子供が音を聴くイメージ（例：image/kid-ear.jpg） -->
+            <!-- 子供が音を聴くイメージ -->
             <img src="image/prm-08_dl.jpg" class="content-img">
 
             <p>
@@ -464,6 +513,10 @@
                 あるいは、トラブルが起きそうな時の「違和感（不協和音）」にいち早く気づけたり。<br>
                 （お母さんの声色で「あ、今怒ってるな」というのがすぐわかるから、あえて近寄らないようにするとか…笑）
             </p>
+
+            <!-- ★追加画像6 -->
+            <img src="image/prm-02_dl.jpg" class="content-img">
+
             <p>
                 これらは全て、目には見えない空気の振動を感じ取る<strong>「音感・リズム感という名の第六感」</strong>が働いているんです。<br>
                 <small>（第六感は、音感やリズム感以外にもたくさんあります。名もないスキルかもしれません。きっとあなたにも思い当たる節があるはず！）</small>
@@ -499,6 +552,10 @@
                 大丈夫です。自信を持って言わせてください。<br>
                 <strong>それは、無いのではありません。「見えていない」だけなんです。</strong>
             </p>
+
+            <!-- ★追加画像7 -->
+            <img src="image/prm-23_dl.jpg" class="content-img">
+
             <p>
                 お子さんは、お母さんのことが大好きです。<br>
                 そしてお母さんも、お子さんのことが大好きですよね。<br>
@@ -506,7 +563,7 @@
                 そして互いが互いを映す鏡のよう…。
             </p>
 
-            <!-- ★画像挿入4：親子写真（例：image/oyako.jpg） -->
+            <!-- 親子写真 -->
             <img src="image/prm-10_dl.jpg" class="content-img"> 
 
             <p>
@@ -525,6 +582,10 @@
             <p>
                 私が全幅の信頼を置く講師たちのレッスン風景を、少し想像してみてください。
             </p>
+
+            <!-- ★追加画像8 -->
+            <img src="image/prm-01_dl.jpg" class="content-img">
+
             <p>
                 講師がピアノで「ジャーン！」と力強い音を鳴らした瞬間、お子さんがハッとして振り返る顔を。<br>
                 あるいは、静かな曲調になったとき、誰に言われなくても自然と身体を揺らし始める姿を。
@@ -537,6 +598,18 @@
                 「お母さん、すごいですよ。<br>
                 この子は今、音が消えたあとの『余韻』を聴いています。<br>
                 とても繊細な耳（センサー）を持っていますよ」
+            </div>
+
+            <!-- 先生と子供の様子（前回の追加分も保持） -->
+            <img src="image/prm-09_dl.jpg" class="content-img" alt="先生と子供の様子">
+
+            <p>
+                また、人見知りが強い子には
+            </p>
+
+            <div class="voice-bubble" style="background:#F0F8FF; border-color:#87CEEB; color:#4682B4;">
+                「大丈夫です！それは感性のアンテナが人一倍高いから。<br>
+                何もしなくても良いので、お子さんの目線を一緒に追ってあげてください。」
             </div>
 
             <p>
@@ -555,7 +628,7 @@
                 脳科学的には、聴覚の発達は<strong>9歳頃</strong>にピークを迎えてしまうと言われています。
             </p>
 
-            <!-- ★画像挿入5：聴覚発達グラフ（例：image/graph.jpg） -->
+            <!-- 聴覚発達グラフ -->
             <div class="img-box">
                 <img src="image/prm-29_dl.jpg" class="content-img"> 
             </div>
@@ -582,6 +655,10 @@
                 親御さんが一人で抱え込み、必死に子供の才能を探す必要はありません。<br>
                 私たち現場の人間は、そのためにいます。
             </p>
+
+            <!-- ★追加画像9 -->
+            <img src="image/prm-26_dl.jpg" class="content-img">
+
             <p>
                 「調律師」がピアノの音を整えるように、ヤマハの先生は、お子さんの心の感度を整え、才能の芽を見つけ出します。<br><br>
                 お子さんに「一生モノのセンサー」をプレゼントできるのは、今この瞬間のお母さんだけです。<br>
